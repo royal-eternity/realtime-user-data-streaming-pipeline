@@ -105,6 +105,40 @@ Successfully tested the complete data flow across the pipeline components.
 
 The record count represents a development test result, not a production throughput benchmark.
 
+## Project Execution – Screenshots & Evidence
+
+The following screenshots were captured during the actual development and testing of the pipeline. They provide visual evidence of the individual components working together, from workflow orchestration and message streaming to data storage and validation.
+
+### 1. Airflow DAG Execution
+
+Shows the `user_automation` DAG and its task execution in the Airflow interface. This demonstrates that the API ingestion workflow was successfully orchestrated.
+
+![Airflow DAG Execution](screenshots/01-airflow-dag.png)
+
+### 2. Kafka Message Verification
+
+Shows JSON user records published to the Kafka `users_data` topic. This confirms that the ingestion workflow successfully delivered events to the message broker.
+
+![Kafka Messages](screenshots/02-kafka-messages.png)
+
+### 3. Apache Spark UI
+
+Shows the Spark application environment used for the streaming pipeline. Spark Structured Streaming consumes the Kafka messages and processes them before writing the results to Cassandra.
+
+![Spark UI](screenshots/03-spark-ui.png)
+
+### 4. Cassandra Record Verification
+
+Shows user records stored in the Cassandra `spark_streams.created_users` table. This verifies that the processed data reached the target NoSQL database.
+
+![Cassandra Records](screenshots/04-cassandra-records.png)
+
+### 5. Cassandra Record Count
+
+Shows the Cassandra record count validation performed after the pipeline execution. A total of **154 records** was observed during the successful development test.
+
+![Cassandra Record Count](screenshots/05-cassandra-count.png)
+
 ## Running the Project
 
 ### Prerequisites
@@ -117,8 +151,8 @@ The record count represents a development test result, not a production throughp
 ### 1. Clone the repository
 
 ```bash
-git clone <YOUR_GITHUB_REPOSITORY_URL>
-cd <YOUR_PROJECT_DIRECTORY>
+git clone https://github.com/royal-eternity/realtime-user-data-streaming-pipeline.git
+cd realtime-user-data-streaming-pipeline
 ```
 
 ### 2. Start the Docker services
@@ -190,8 +224,9 @@ docker exec cassandra cqlsh -e "SELECT COUNT(*) FROM spark_streams.created_users
 - Add schema evolution handling.
 - Implement a larger-scale dataset and performance testing.
 
-
 ---
 
 **Author:** Royal Chodagiri  
 **Focus:** Data Engineering | Python | SQL | Apache Spark | Kafka | Airflow | AWS
+
+**Project Repository:** https://github.com/royal-eternity/realtime-user-data-streaming-pipeline
