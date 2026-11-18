@@ -1,0 +1,30 @@
+﻿# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# IntelliJ
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Airflow logs
+logs/
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+secrets/
+
+# Backup files
+*.backup
+*.bak
+
+# Checkpoints
+checkpoints/
