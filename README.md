@@ -8,22 +8,18 @@ Built an end-to-end data engineering pipeline that ingests user data from an ext
 Apache Airflow orchestrates the ingestion workflow, while Docker Compose provides the containerized environment for the pipeline components.
 
 The project demonstrates practical experience with API ingestion, workflow orchestration, event streaming, distributed data processing, and NoSQL data storage.
-
 ## Architecture
 
-The following diagram illustrates the overall system architecture and the flow of data through the pipeline, from API ingestion and orchestration to stream processing and Cassandra storage.
+The following diagram illustrates the system architecture and the flow of data from API ingestion through orchestration and stream processing to Cassandra storage.
 
 ![Real-Time User Data Streaming Pipeline Architecture](Data%20engineering%20architecture.png)
 
 **Data flow:** RandomUser API → Python ingestion → Apache Airflow → Apache Kafka → Apache Spark Structured Streaming → Apache Cassandra.
 
+**Supporting components:**
 - **PostgreSQL:** Airflow metadata database.
-- **Zookeeper:** Kafka cluster coordination.
+- **Apache Zookeeper:** Kafka cluster coordination.
 - **Docker:** Containerized project environment.
-
-**Data flow:** RandomUser API → Python ingestion → Airflow orchestration → Kafka → Spark Structured Streaming → Cassandra.
-
-PostgreSQL is used by Airflow for its metadata database; it is not the source of the streaming records.
 
 ## Technology Stack
 
