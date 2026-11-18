@@ -11,20 +11,15 @@ The project demonstrates practical experience with API ingestion, workflow orche
 
 ## Architecture
 
-```mermaid
-flowchart TD
-    A["RandomUser API"] --> B["Python Ingestion"]
-    B --> C["Apache Airflow"]
-    C --> D["Apache Kafka"]
-    D --> E["Spark Structured Streaming"]
-    E --> F["Apache Cassandra"]
+The following diagram illustrates the overall system architecture and the flow of data through the pipeline, from API ingestion and orchestration to stream processing and Cassandra storage.
 
-    G["PostgreSQL"] -.-> C
-    H["Docker Compose"] -.-> C
-    H -.-> D
-    H -.-> E
-    H -.-> F
-```
+![Real-Time User Data Streaming Pipeline Architecture](Data%20engineering%20architecture.png)
+
+**Data flow:** RandomUser API → Python ingestion → Apache Airflow → Apache Kafka → Apache Spark Structured Streaming → Apache Cassandra.
+
+- **PostgreSQL:** Airflow metadata database.
+- **Zookeeper:** Kafka cluster coordination.
+- **Docker:** Containerized project environment.
 
 **Data flow:** RandomUser API → Python ingestion → Airflow orchestration → Kafka → Spark Structured Streaming → Cassandra.
 
